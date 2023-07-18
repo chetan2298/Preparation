@@ -1,54 +1,13 @@
 #include <iostream>
+#include "Linkedlist.h"
 using namespace std;
-class node
-{
-private:
-    int data;
-    node *next;
-
-public:
-    node(int x)
-    {
-        data = x;
-        next = nullptr;
-    }
-    void print()
-    {
-        cout << data << "-->";
-    }
-
-    friend class linkedlist;
-};
-class linkedlist
-{
-private:
-    node *head = nullptr;
-    node *tail = nullptr;
-
-public:
-    node *test;
-    int test6;
-    void pushfront(int x)
-    {
-        if (!head)
-        {
-            node *pointer = new node(x);
-            head = pointer;
-            tail = pointer;
-        }
-    }
-    void print()
-    {
-        while (head)
-        {
-            head->print();
-            head = head->next;
-        }
-    }
-};
 int main()
 {
     linkedlist x;
+    x.pushfront(26);
     x.pushfront(3);
+    x.pushfront(4);
+    x.pushfront(99);
+    x.pushback(68);
     x.print();
 }
