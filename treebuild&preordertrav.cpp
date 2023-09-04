@@ -25,29 +25,29 @@ public:
     node(int x) : data(x), left(nullptr), right(nullptr) {}
 };
 // preorder build
-node *prebuildtree()
+node *buildtree()
 {
     int data;
     cin >> data;
     if (data == -1)
         return nullptr;
     node *y = new node(data);
-    y->left = prebuildtree();
-    y->right = prebuildtree();
+    y->left = buildtree();
+    y->right = buildtree();
     return y;
 }
-void printtree(node *rt)
+void preprinttree(node *rt)
 {
 
     if (rt == nullptr)
         return;
     cout << rt->data;
-    printtree(rt->left);
-    printtree(rt->right);
+    preprinttree(rt->left);
+    preprinttree(rt->right);
 }
 
 int main()
 {
-    node *root = prebuildtree();
-    printtree(root);
+    node *root = buildtree();
+    preprinttree(root);
 }
