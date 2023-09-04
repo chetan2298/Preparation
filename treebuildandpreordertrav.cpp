@@ -56,10 +56,22 @@ void inorderprinttree(node *rt)
     inorderprinttree(rt->right);
 }
 
+void postprinttree(node *rt)
+{
+
+    if (rt == nullptr)
+        return;
+    postprinttree(rt->left);
+    postprinttree(rt->right);
+    cout << rt->data;
+}
+
 int main()
 {
     node *root = buildtree();
     preprinttree(root);
     cout << endl;
     inorderprinttree(root);
+    cout << endl;
+    postprinttree(root);
 }
