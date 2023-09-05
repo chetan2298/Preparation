@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 // input : 1
 //  1
@@ -66,12 +67,39 @@ void postprinttree(node *rt)
     cout << rt->data;
 }
 
+void levelprinttree(node *rt)
+{
+    queue<node *> t;
+    t.push(rt);
+    t.push(nullptr);
+    while (!t.empty())
+    {
+        if (t.front() == nullptr)
+        {
+            cout << endl;
+            t.pop();
+            if (!t.empty())
+                t.push(nullptr);
+        }
+        else
+        {
+            if (t.front()->left != nullptr)
+                t.push(t.front()->left);
+            if (t.front()->right != nullptr)
+                t.push(t.front()->right);
+            cout << t.front()->data;
+            t.pop();
+        }
+    }
+}
+
 int main()
 {
     node *root = buildtree();
-    preprinttree(root);
-    cout << endl;
-    inorderprinttree(root);
-    cout << endl;
-    postprinttree(root);
+    // preprinttree(root);
+    // cout << endl;
+    // inorderprinttree(root);
+    // cout << endl;
+    // postprinttree(root);
+    levelprinttree(root);
 }
